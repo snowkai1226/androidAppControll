@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.4//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xk.android.dao.PhoneInfoDao">
+
+    <resultMap id="phoneInfo" type="PhoneInfo">
+        <id property="id" column="id" javaType="int"/>
+        <result property="model" column="model" javaType="String"/>
+        <result property="version" column="version" javaType="String"/>
+    </resultMap>
+
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="PhoneInfo">
+        insert into phone_info(model,version)  values(#{model},#{version})
+    </insert>
+
+    <select id="select" resultMap="phoneInfo" parameterType="String">
+        select * from phone_info where model=#{model}
+    </select>
+
+</mapper>
